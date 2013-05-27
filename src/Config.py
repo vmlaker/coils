@@ -46,7 +46,7 @@ class Config(object):
             if line[0] == '#':
                 continue
             if len(line) < 2:
-                print 'Error line %d file %s'%(count, fname)
+                print('Error line %d file %s'%(count, fname))
                 continue
             key = line.split()[0]
             val = line[len(key):].lstrip()
