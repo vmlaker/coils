@@ -1,4 +1,8 @@
 coils
 =====
 
-A boneyard of teensy-weensy codes written in 100% pure Python. That's about it for now.
+.. image:: https://api.travis-ci.org/vmlaker/coils.png
+  :alt: Build Result Image
+  :target: https://travis-ci.org/vmlaker/coils
+
+Some of my miscellaneous codes. Written in 100% pure Python.
