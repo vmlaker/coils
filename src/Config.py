@@ -1,47 +1,55 @@
+"""A simple loadable, saveable, one-line-per-entry config."""
+
 class Config(object):
     
     def __init__(self, fname=None):
-        self.fname = fname
-        self.data = {}
+        """Create config object, optionally load from file."""
+        self._fname = fname
+        self._data = dict()
         if fname:
             self.load(fname)
 
     def load(self, fname=None):
+        """Load config with contents of file."""
         if fname:
             self._load_from_file(fname)
-        elif self.fname:
-            self._load_from_file(self.fname)
-        pass
+        elif self._fname:
+            self._load_from_file(self._fname)
 
     def save(self, fname=None):
+        """Save config to file."""
         if fname:
             self._save_to_file(fname)
-        elif self.fname:
-            self._save_to_file(self.fname)
+        elif self._fname:
+            self._save_to_file(self._fname)
 
     def __setitem__(self, key, val):
-        self.data[key] = val
+        """Add entry using index operator."""
+        self._data[key] = val
         
     def __getitem__(self, key):
-        if key not in self.data:
+        """Retrieve entry using index operator."""
+        if key not in self._data:
             return None
-        return self.data[key]
+        return self._data[key]
 
     def __str__(self):
+        """Return string representation."""
         result = ''
-        for key in sorted(self.data.keys()):
+        for key in sorted(self._data):
             if result:
                 result += '\n'
-            result += '%s %s'%(key, self.data[key])
+            result += '%s %s'%(key, self._data[key])
         return result
     
     def _load_from_file(self, fname):
+        """Low-level load implementation."""
         f = open(fname, 'r')
         count = -1
         for line in f.readlines():
             count += 1
             line = line.strip()
-            if not len(line):
+            if not line:
                 continue
             if line[0] == '#':
                 continue
@@ -50,12 +58,11 @@ class Config(object):
                 continue
             key = line.split()[0]
             val = line[len(key):].lstrip()
-            self.data[key] = val
+            self._data[key] = val
         f.close()
 
     def _save_to_file(self, fname):
+        """Low-level save implementation."""
         f = open(fname, 'w')
         f.write(str(self))
         f.close()
-
-# The end.
