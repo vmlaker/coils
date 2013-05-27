@@ -30,7 +30,9 @@ class Config(object):
     def __str__(self):
         result = ''
         for key in sorted(self.data.keys()):
-            result += '%s %s\n'%(key, self.data[key])
+            if result:
+                result += '\n'
+            result += '%s %s'%(key, self.data[key])
         return result
     
     def _load_from_file(self, fname):
