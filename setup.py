@@ -1,10 +1,11 @@
 """Distutils file for coils module."""
 
 from distutils.core import setup
+from src import __version__
 
 setup(
     name         = 'coils',
-    version      = '0.0.1',
+    version      = __version__,
     description  = 'Pure Python miscellanea.',
     url          = 'http://github.com/vmlaker/coils',
     author       = 'Velimir Mlaker',
