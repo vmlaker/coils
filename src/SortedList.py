@@ -21,19 +21,19 @@ class SortedList(object):
         # But instead we'll use the sorted insertion.
         bisect.insort_left(self._list, item)
 
-    def getCountLessThan(self, item):
+    def getCountLT(self, item):
         """Return number of elements less than *item*."""
         index = bisect.bisect_left(self._list, item)
         return index
 
-    def getCountGreaterThan(self, item):
+    def getCountGT(self, item):
         """Return number of elements greater than *item*."""
         index = bisect.bisect_right(self._list, item)
         return len(self._list) - index
 
-    def removeLessThan(self, item):
+    def removeLT(self, item):
         """Trim off any elements less than *item*.
         Return number of elements trimmed."""
-        count = self.getCountLessThan(item)
+        count = self.getCountLT(item)
         self._list = self._list[count:]
         return count
