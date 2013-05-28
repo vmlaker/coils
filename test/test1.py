@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
-from coils import Config
-c1 = Config()
-c1['NAME'] = 'Bender'
-c1['SURNAME'] = 'Rodríguez'
-print(c1)
 
-from os.path import join, dirname, abspath
-fname = join(dirname(abspath(__file__)), 'test1.cfg')
-c2 = Config(fname)
-c2['FRUIT'] = 'apple'
-print(c2['FRUIT'])
-print(c2)
+def test1():
+    """Start from empty, set and get."""
+    from coils import Config
+    c = Config()
+    c['NAME'] = 'Bender'
+    c['SURNAME'] = 'Rodríguez'
+    assert c['NAME'] == 'Bender'
+    assert c['SURNAME'] == 'Rodríguez'
+
+def test2():
+    """Read from file and get."""
+    from os.path import join, dirname, abspath
+    from coils import Config
+    fname = join(dirname(abspath(__file__)), 'test1.cfg')
+    c = Config(fname)
+    assert c['TOON'] == 'Bugs Bunny'
+    assert c['QUOTE'] == 'The quick brown fox jumped over the lazy dog.'
