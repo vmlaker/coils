@@ -1,6 +1,6 @@
 """The coils module."""
 
-__version__ = '0.0.6'
+__version__ = '0.0.7'
 
 from .Config import Config
 from .SortedList import SortedList
