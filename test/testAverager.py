@@ -1,6 +1,6 @@
 def test1():
     """Test Averager."""
-    from coils import Averager
+    from Averager import Averager
     a = Averager(0)  # Same as Averager(1)
     assert len(a) == 0
     assert a.add(1.0) == 1.0  # 1.0 / 1
@@ -11,7 +11,7 @@ def test1():
 
 def test2():
     """Test Averager."""
-    from coils import Averager
+    from Averager import Averager
     a = Averager(2)
     assert len(a) == 0
     assert a.add(1.0) == 1.0  # 1.0 / 1

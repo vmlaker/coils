@@ -1,11 +1,11 @@
 def test1():
     """Tick a simple ticker."""
-    from coils import RateTicker
+    from RateTicker import RateTicker
     a = RateTicker((1,))
     assert a.tick() == (1.0,)
 
 def test2():
     """Tick a three-period ticker."""
-    from coils import RateTicker
+    from RateTicker import RateTicker
     a = RateTicker((1,2,5,))
     assert a.tick() == (1.0, 0.5, 0.2)

@@ -1,7 +1,7 @@
 """Defines RateTicker class."""
 
 import datetime
-from .SortedList import SortedList
+from SortedList import SortedList
 
 class RateTicker(SortedList):
     """Computes rates of ticking."""

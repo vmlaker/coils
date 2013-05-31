@@ -1,6 +1,6 @@
 def test1():
     """Start from empty."""
-    from coils import SortedList
+    from SortedList import SortedList
     a = SortedList()
     for val in range(10):
         a.add(val)
@@ -11,7 +11,7 @@ def test1():
 
 def test2():
     """Construct from list."""
-    from coils import SortedList
+    from SortedList import SortedList
     a = SortedList([b for b in range(10)])
     assert a.getCountLT(5) == 5
     assert a.getCountGT(5) == 4

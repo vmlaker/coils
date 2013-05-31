@@ -1,7 +1,7 @@
 def test1():
     """Test the Ring data structure."""
 
-    from coils import Ring
+    from Ring import Ring
 
     a = Ring([0,1,2])
     assert a[0] == 0
