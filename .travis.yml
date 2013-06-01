@@ -4,6 +4,8 @@ python:
   - "2.7"
   - "3.2"
   - "3.3"
-# command to run tests
+
+# Command to run tests.
+# Run nose on test files sorted alphabetically.
 script:
-  - nosetests
+  - nosetests `ls -d test/*.py`
