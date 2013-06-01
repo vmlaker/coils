@@ -6,6 +6,11 @@ python:
   - "3.3"
 
 # Command to run tests.
-# Run nose on test files sorted alphabetically.
+# Force nose to process test files in alphabetical order so that
+# test000.py is first (it changes sys.path which is needed for other
+# of tests.) For some reason on Travis CI workers, nose does not 
+# process files alphabetically if providing "nosetests" command 
+# without arguments. Hence the explicit test file listing using
+# output of "ls" command.
 script:
   - nosetests `ls -d test/*.py`
