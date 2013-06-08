@@ -8,5 +8,6 @@ coils
 Some of my miscellaneous codes. Written in 100% pure Python.
 
 Test the codes by running:
+::
 
-    nosetests
+  nosetests
