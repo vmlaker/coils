@@ -44,22 +44,21 @@ class Config(object):
     
     def _load_from_file(self, fname):
         """Low-level load implementation."""
-        f = open(fname, 'r')
-        count = -1
-        for line in f.readlines():
-            count += 1
-            line = line.strip()
-            if not line:
-                continue
-            if line[0] == '#':
-                continue
-            if len(line) < 2:
-                print('Error line %d file %s'%(count, fname))
-                continue
-            key = line.split()[0]
-            val = line[len(key):].lstrip()
-            self._data[key] = val
-        f.close()
+        with open(fname, 'r') as f:
+            count = -1
+            for line in f.readlines():
+                count += 1
+                line = line.strip()
+                if not line:
+                    continue
+                if line[0] == '#':
+                    continue
+                if len(line) < 2:
+                    print('Error line %d file %s'%(count, fname))
+                    continue
+                key = line.split()[0]
+                val = line[len(key):].lstrip()
+                self._data[key] = val
 
     def _save_to_file(self, fname):
         """Low-level save implementation."""
