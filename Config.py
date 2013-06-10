@@ -39,7 +39,7 @@ class Config(object):
         for key in sorted(self._data):
             if result:
                 result += '\n'
-            result += '%s %s'%(key, self._data[key])
+            result += '{0} {1}'.format(key, self._data[key])
         return result
     
     def _load_from_file(self, fname):
@@ -53,11 +53,11 @@ class Config(object):
                     continue
                 if line[0] == '#':
                     continue
-                if len(line) < 2:
-                    print('Error line %d file %s'%(count, fname))
-                    continue
                 key = line.split()[0]
                 val = line[len(key):].lstrip()
+                if not val:
+                    print('Error line {0} file {1}'.format(count, fname))
+                    continue
                 self._data[key] = val
 
     def _save_to_file(self, fname):
