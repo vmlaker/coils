@@ -1,7 +1,12 @@
 """Defines RateTicker class."""
 
 import datetime
-from .SortedList import SortedList
+
+# Keep Python 2 and 3 happy during nosetests.
+try:
+    from SortedList import SortedList
+except ImportError:
+    from .SortedList import SortedList
 
 class RateTicker(SortedList):
     """Computes rates of ticking."""
