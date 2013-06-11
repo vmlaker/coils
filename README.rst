@@ -1,36 +1,24 @@
-coils
-=====
-
 .. image:: https://api.travis-ci.org/vmlaker/coils.png
   :alt: Build Result Image
   :target: https://travis-ci.org/vmlaker/coils
 
-Some of my miscellaneous, 100% pure Python codes.
-
-coils is written so you can use it as a Python module 
-in your own project's source tree. Simply clone
-the repo wherever you see fit:
+This is some of my miscellaneous, standalone, 100% pure 
+Python codes I use in other projects. 
+It's not "officially packaged" in any way; just dump 
+the directory in your own project's source tree 
+and use it as a Python module:
 ::
   
   git clone http://github.com/vmlaker/coils
 
-Or, if you're inside your own Git repo, you might 
-prefer to clone coils as a Git submodule instead:
+Or, if inside your own Git repo, consider cloning
+it as a Git submodule instead:
 ::
 
   git submodule add http://github.com/vmlaker/coils
 
-Now you're ready to rock:
-::
-
-  python
-  >>> import coils
-  >>> r = coils.RateTicker((1, 5, 15))
-  >>> r.tick()
-  (1.0, 0.2, 0.06666666666666667)
-
-If you can't (or just don't want to) use the name "coils",
-you're free to call it whatever you want, no problem:
+By the way, the name "coils" is not tied to any of the codes inside.
+You're free to call it whatever you want:
 ::
 
   git submodule add http://github.com/vmlaker/coils other/stuff/swirly
