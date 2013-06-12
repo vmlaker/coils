@@ -4,6 +4,8 @@ python:
   - "2.7"
   - "3.2"
   - "3.3"
+install:
+  - pip install coveralls --use-mirrors
 
 # Command to run tests.
 # Force nose to process test files in alphabetical order so that
@@ -13,4 +15,6 @@ python:
 # without arguments. Hence the explicit test file listing using
 # output of "ls" command.
 script:
-  - nosetests `ls -d test/*.py`
+  - nosetests --with-coverage `ls -d test/*.py`
+after_success:
+  - coveralls
