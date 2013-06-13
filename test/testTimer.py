@@ -9,3 +9,4 @@ def test1():
     sleep(0.001)
     assert timer.get() > timedelta(seconds=0.001)
     assert timer.getTotal() > timedelta(seconds=0.002)
+test1()

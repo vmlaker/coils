@@ -23,3 +23,4 @@ def test1():
     assert a[2] == 1
     assert a.first() == 2
     assert a.last() == 1
+test1()

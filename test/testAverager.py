@@ -8,6 +8,7 @@ def test1():
     assert a.add(2.0) == 2.0  # 2.0 / 1
     assert len(a) == 1
     assert a.add(3.0) == 3.0  # 3.0 / 1
+test1()
 
 def test2():
     """Test Averager."""
@@ -20,3 +21,4 @@ def test2():
     assert len(a) == 2
     assert a.add(3.0) == 2.5  # (2.0 + 3.0) / 2
     assert len(a) == 2
+test2()

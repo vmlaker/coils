@@ -8,6 +8,7 @@ def test1():
     assert a.getCountGT(5) == 4
     assert a.removeLT(5) == 5
     assert a.getCountLT(5) == 0
+test1()
 
 def test2():
     """Construct from list."""
@@ -17,3 +18,4 @@ def test2():
     assert a.getCountGT(5) == 4
     assert a.removeLT(5) == 5
     assert a.getCountLT(5) == 0
+test2()

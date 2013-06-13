@@ -1,4 +1,4 @@
-def test():
+def test000():
     """
     Hack to get nose to run tests properly.
     This file should be the first file processed by a nosetests run.
@@ -17,3 +17,4 @@ def test():
                 )
             )
         )
+test000()

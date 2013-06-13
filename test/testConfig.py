@@ -8,6 +8,7 @@ def test1():
     c['SURNAME'] = 'Rodríguez'
     assert c['NAME'] == 'Bender'
     assert c['SURNAME'] == 'Rodríguez'
+test1()
 
 def test2():
     """Read from file and get."""
@@ -17,6 +18,7 @@ def test2():
     c = Config(fname)
     assert c['TOON'] == 'Bugs Bunny'
     assert c['QUOTE'] == 'The quick brown fox jumped over the lazy dog.'
+test2()
 
 def test3():
     """Read from file containing erroneous line, and get."""
@@ -26,3 +28,4 @@ def test3():
     c = Config(fname)
     assert c['Kingdom'] == 'Animalia'
     assert c['Genus'] == 'Python'
+test3()
