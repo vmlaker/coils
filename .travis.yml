@@ -11,17 +11,17 @@ install:
 # Force nose to process test files in alphabetical order so that
 # test000.py is first (it changes sys.path which is needed for 
 # other tests) by explicitly ordering parameters for nosetests command.
-# Then run coverage.
 script:
   - nosetests `ls -d test/*.py`
-  - coverage erase
-  - coverage run -a test/test000.py
-  - coverage run -a test/testAverager.py
-  - coverage run -a test/testConfig.py
-  - coverage run -a test/testRateTicker.py
-  - coverage run -a test/testRing.py
-  - coverage run -a test/testSortedList.py
-  - coverage run -a test/testTimer.py
 
-after_success:
-  - coveralls
+#  - coverage erase
+#  - coverage run -a test/test000.py
+#  - coverage run -a test/testAverager.py
+#  - coverage run -a test/testConfig.py
+#  - coverage run -a test/testRateTicker.py
+#  - coverage run -a test/testRing.py
+#  - coverage run -a test/testSortedList.py
+#  - coverage run -a test/testTimer.py
+
+#after_success:
+#  - coveralls
