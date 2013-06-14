@@ -1,6 +1,12 @@
-"""Like the raw_input built-in, but with bells and whistles."""
+"""Like the input built-in, but with bells and whistles."""
 
 import getpass
+
+# Use raw_input for Python 2.x
+try:
+    input = raw_input
+except NameError:
+    pass
 
 def user_input(field, default='', choices=None, password=False, empty_ok=False, accept=False):
     """Prompt user for input until a value is retrieved or default
@@ -20,21 +26,21 @@ def user_input(field, default='', choices=None, password=False, empty_ok=False, 
     while not result:
         prompt = field
         if default:
-            prompt += ' [{:}]'.format(default)
+            prompt += ' [{0}]'.format(default)
         prompt += ': '
         if accept and not (not default and not empty_ok):
             print(prompt)
-            result = '{:}'.format(default)
+            result = '{0}'.format(default)
         else:
             if password:
                 result = getpass.getpass(prompt)
             else:
-                result = raw_input(prompt)
+                result = input(prompt)
         result = result.strip()
         if not result:
             result = default
         if choices and result not in choices:
-            print('Must be one of {:}'.format(choices))
+            print('Must be one of {0}'.format(choices))
             result = ''
         if empty_ok:
             break
