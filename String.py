@@ -7,13 +7,26 @@ MICRO = '.%f'
 TIME_FORMAT = '%Y-%m-%d %H:%M:%S' + MICRO
 
 def string2time(text):
-    """Return datetime object from given string.
-    Attempt to translate the string with microseconds, and if that
-    fails, translate it without microseconds."""
-    try:
-        return datetime.strptime(text, TIME_FORMAT)
-    except:
-        return datetime.strptime(text, TIME_FORMAT[:-len(MICRO)])
+    """Return datetime object from given string,
+    or None if failed to translate."""
+    length = len(TIME_FORMAT)
+    result = None
+    while length:
+        try:
+            result = datetime.strptime(text, TIME_FORMAT[:length])
+        except:
+            length -= 1
+        else:
+            break
+    return result
+    # The old function:
+    #"""Return datetime object from given string.
+    #Attempt to translate the string with microseconds, and if that
+    #fails, translate it without microseconds."""
+    #try:
+    #    return datetime.strptime(text, TIME_FORMAT)
+    #except:
+    #    return datetime.strptime(text, TIME_FORMAT[:-len(MICRO)])
 
 def time2string(tstamp, micro=True):
     """Return time string, given a datetime object."""
