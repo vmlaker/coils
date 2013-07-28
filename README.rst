@@ -1,9 +1,14 @@
-.. image:: https://api.travis-ci.org/vmlaker/coils.png
+.. image:: http://vmlaker.github.io/coils/logo.png
+  :alt: Coils Logo
+
+.. image:: https://api.travis-ci.org/vmlaker/coils.png?branch=master
   :alt: Build Result Image
   :target: https://travis-ci.org/vmlaker/coils
 
-This is some of my miscellaneous, standalone, 100% pure 
-Python codes I use in other projects. 
+Coils
+=====
+
+My miscellaneous, standalone, 100% pure Python codes I use in other projects. 
 It's not "officially packaged" in any way; just dump 
 the directory in your own project's source tree 
 and use it as a Python module:
@@ -11,8 +16,7 @@ and use it as a Python module:
   
   git clone http://github.com/vmlaker/coils
 
-Or, if inside your own Git repo, consider cloning
-it as a Git submodule instead:
+Or, consider cloning it as a Git submodule inside your own repo:
 ::
 
   git submodule add http://github.com/vmlaker/coils
