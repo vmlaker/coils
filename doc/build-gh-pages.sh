@@ -3,20 +3,21 @@
 
 # Switch to gh-pages branch and start afresh.
 git checkout gh-pages
-rm -rf *
+#rm -rf *
 
 # Switch to master branch (Sphinx build needs doc/.)
 git checkout master doc
 git reset HEAD
 
-# Build the docs and move html/ files root directory.
-cd doc
-python ./create.py build
-mv -fv build/html/* ..
-cd ..
+# Clone the repo.
+git clone http://github.com/vmlaker/coils
+
+# Build the docs and move html/ files to root directory.
+make -C doc html
+mv -fv doc/build/html/* .
 
 # Remove the directories (from master branch) needed for building docs.
-rm -rf doc
+rm -rf doc coils
 
 # Add everything to gh-pages.
 git add .
