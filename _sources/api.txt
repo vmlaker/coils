@@ -3,52 +3,56 @@
 The Coils programming API
 =========================
 
+Functions
+---------
+
+.. autofunction:: coils.string2time
+.. autofunction:: coils.time2string
+.. autofunction:: coils.time2levels
+.. autofunction:: coils.time2dir
+.. autofunction:: coils.time2fname
+.. autofunction:: coils.user_input
+
+
+Classes
+-------
+
 .. autoclass:: coils.Averager
-    :members:
+    :members: add, __len__
     :undoc-members:
 
 ----
 
 .. autoclass:: coils.Config
-    :members:
+    :members: load, save, __setitem__, __getitem__, __str__
     :undoc-members:
 
 ----
 
 .. autoclass:: coils.RateTicker
-    :members:
+    :members: tick
     :undoc-members:
 
 ----
 
 .. autoclass:: coils.Ring
-    :members:
+    :members: __getitem__, turn, first, last, __len__
     :undoc-members:
 
 ----
 
 .. autoclass:: coils.SocketTalk
-    :members:
+    :members: pair, server, client, put, get, close
     :undoc-members:
 
 ----
 
 .. autoclass:: coils.SortedList
-    :members:
-    :undoc-members:
-
-----
-
-.. automodule:: coils.String
-    :members:
+    :members: add, getCountLT, getCountGT, removeLT
     :undoc-members:
 
 ----
 
 .. autoclass:: coils.Timer
-    :members:
+    :members: get, getTotal
     :undoc-members:
-
-----
-
-.. autofunction:: coils.user_input
