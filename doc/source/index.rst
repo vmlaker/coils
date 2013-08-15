@@ -10,9 +10,9 @@ Coils is a small Python library of generic codes.
 It's written in 100% pure Python.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    install
-   api
+   API <api>
    build_doc
    about
