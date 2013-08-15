@@ -1,3 +1,4 @@
+__version__ = '1.0'
 from .Averager import Averager
 from .Config import Config
 from .RateTicker import RateTicker
