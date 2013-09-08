@@ -8,6 +8,7 @@ class Ring:
     """Circular data structure implemented as a list."""
 
     def __init__(self, donor):
+        """Initialize the ring with a donor list."""
         if not donor:
             raise 'Ring must have at least one element.'
         self._data = donor
@@ -22,11 +23,15 @@ class Ring:
         return self._data[index]
 
     def turn(self):
+        """Turn the ring for a single position.
+        For example, [a, b, c, d] becomes [b, c, d, a].""" 
         first = self._data.pop(0)
         self._data.append(first)
 
     def first(self):
+        """Return the first entry."""
         return self._data[0]
 
     def last(self):
+        """Return the last entry."""
         return self._data[-1]

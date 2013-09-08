@@ -13,14 +13,19 @@ def user_input(field, default='', choices=None, password=False, empty_ok=False, 
     is accepted. Return the input.
 
     Arguments:
-       field      Description of the input being prompted for.
-       default    Default value for the input accepted with a Return-key.
-       password   Whether the user input should not be echoed to screen.
-       empty_ok   Whether it's okay to accept an empty input.
-       accept     Whether to skip getting actual user input and just accept
-                  the default value, unless prevented by the combination of
-                  arguments "empty_ok" and "default". That is, unless "default" 
-                  is an empty string and "empty_ok" is False.
+    
+    *field* - Description of the input being prompted for.
+
+    *default* - Default value for the input accepted with a Return-key.
+
+    *password* - Whether the user input should not be echoed to screen.
+
+    *empty_ok* - Whether it's okay to accept an empty input.
+
+    *accept* - Whether to skip getting actual user input and just accept
+    the default value, unless prevented by the combination of
+    arguments *empty_ok* and *default*. That is, unless *default* 
+    is an empty string and *empty_ok* is False.
     """
     result = ''
     while not result:

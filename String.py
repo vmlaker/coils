@@ -7,8 +7,8 @@ MICRO = '.%f'
 TIME_FORMAT = '%Y-%m-%d %H:%M:%S' + MICRO
 
 def string2time(text):
-    """Return datetime object from given string,
-    or None if failed to translate."""
+    """Return :class:`datetime.datetime` object from given string,
+    or ``None`` if failed to translate."""
     length = len(TIME_FORMAT)
     result = None
     while length:
@@ -29,19 +29,24 @@ def string2time(text):
     #    return datetime.strptime(text, TIME_FORMAT[:-len(MICRO)])
 
 def time2string(tstamp, micro=True):
-    """Return time string, given a datetime object."""
+    """Given a :class:`datetime.datetime` object,
+    return a formatted time string."""
     tformat = TIME_FORMAT if micro else TIME_FORMAT[:-len(MICRO)]
     return tstamp.strftime(tformat)
 
 def time2levels(tstamp):
-    """Return a list of directory levels (as strings) given a datetime object.
-         E.g. given 2011-09-25 13:01:44,
-              return ['2011', '09', '25', '13', '01'] 
+    """Given a :class:`datetime.datetime` object,
+    return a list of directory levels (as strings).
+
+    For example, given "2013-09-08 13:01:44",
+    return ['2013', '09', '08', '13', '01'] 
     """
     return [tstamp.strftime(xx) for xx in ('%Y', '%m', '%d', '%H', '%M')]
 
 def time2dir(tstamp):
-    """Return assembly of os.path.join()s for given tstamp."""
+    """Given a :class:`datetime.datetime` object,
+    return a path assembled with :func:`os.path.join`
+    for the levels."""
     result = ''
     for field in time2levels(tstamp):
         result = join(result, field)
@@ -50,6 +55,8 @@ def time2dir(tstamp):
 FILENAME_FORMAT = '__%Y-%m-%d__%H:%M:%S:%f__'
 
 def time2fname(tstamp, full=False):
+    """Return full path to filename prefix (i.e. without dot extension)
+    represented by given :class:`datetime.datetime` object."""
     result = tstamp.strftime(FILENAME_FORMAT)
     result = result if not full else join(time2dir(tstamp), result)
     return result

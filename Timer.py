@@ -11,13 +11,15 @@ class Timer:
         self._previous = self._started
 
     def getTotal(self):
-        """Return a Timedelta of total time elapsed since construction."""
+        """Return a :class:`datetime.timedelta` object representing
+        total time elapsed since construction."""
         now = datetime.datetime.now()
         result = now - self._started
         return result
 
     def get(self):
-        """Return a TimeDelta of time elapsed since Timer object construction, 
+        """Return a :class:`datetime.timedelta` object representing
+        time elapsed since object construction, 
         or since last call to this function, whichever is more recent."""
         now = datetime.datetime.now()
         result = now - self._previous
