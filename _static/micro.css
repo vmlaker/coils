@@ -6,7 +6,7 @@ body {
     font-size: 14px;
     margin: 0 auto;
     padding: 0 10px;
-    min-width: 600px;
+    min-width: 500px;
     max-width: 800px;
 }
 
@@ -27,6 +27,14 @@ pre {
     border: 1px solid silver;
 }
 
+a {
+    color: black;
+}
+
+a:hover {
+    color: gray;
+}
+
 .related {
     font-size: 0.8em;
     margin: 10px 0;
@@ -36,13 +44,21 @@ pre {
 }
 
 tt.literal {
-    font-style: italic;
-    font-size: 1em;
-    background-color: blue;
+    padding: 0px 4px;
+    background-color: whitesmoke;
+    border: 1px solid gainsboro;
 }
 
-a tt.literal {
+tt.py {
+    
     text-decoration: underline;
+    color: black;
+    border: 0;
+    background: none;
+}
+
+tt.py:hover {
+    color: gray;
 }
 
 tt.descclassname, tt.descname {
