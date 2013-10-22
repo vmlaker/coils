@@ -1,27 +1,36 @@
-"""A simple loadable, saveable, one-line-per-entry config."""
+"""A micro config utility,
+loadable, saveable, one-line-per-entry config class."""
 
 class Config(object):
     
     def __init__(self, fname=None):
         """Create config object, optionally load from file."""
-        self._fname = fname
         self._data = dict()
         if fname:
             self.load(fname)
 
-    def load(self, fname=None):
+    def load(self, fname):
         """Load config with contents of file."""
-        if fname:
-            self._load_from_file(fname)
-        elif self._fname:
-            self._load_from_file(self._fname)
+        with open(fname, 'r') as f:
+            count = -1
+            for line in f.readlines():
+                count += 1
+                line = line.strip()
+                if not line:
+                    continue
+                if line[0] == '#':
+                    continue
+                key = line.split()[0]
+                val = line[len(key):].lstrip()
+                if not val:
+                    print('Error line {0} file {1}'.format(count, fname))
+                    continue
+                self._data[key] = val
 
-    def save(self, fname=None):
+    def save(self, fname):
         """Save config to file."""
-        if fname:
-            self._save_to_file(fname)
-        elif self._fname:
-            self._save_to_file(self._fname)
+        with open(fname, 'w') as f:
+            f.write(str(self))
 
     def __setitem__(self, key, val):
         """Add entry using index operator."""
@@ -41,27 +50,3 @@ class Config(object):
                 result += '\n'
             result += '{0} {1}'.format(key, self._data[key])
         return result
-    
-    def _load_from_file(self, fname):
-        """Low-level load implementation."""
-        with open(fname, 'r') as f:
-            count = -1
-            for line in f.readlines():
-                count += 1
-                line = line.strip()
-                if not line:
-                    continue
-                if line[0] == '#':
-                    continue
-                key = line.split()[0]
-                val = line[len(key):].lstrip()
-                if not val:
-                    print('Error line {0} file {1}'.format(count, fname))
-                    continue
-                self._data[key] = val
-
-    def _save_to_file(self, fname):
-        """Low-level save implementation."""
-        f = open(fname, 'w')
-        f.write(str(self))
-        f.close()

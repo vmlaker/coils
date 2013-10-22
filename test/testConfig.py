@@ -29,3 +29,20 @@ def test3():
     assert c['Kingdom'] == 'Animalia'
     assert c['Genus'] == 'Python'
 test3()
+
+def test4():
+    """Read from file, get, save, load via constructor and load()."""
+    from os.path import join, dirname, abspath
+    from Config import Config
+    fname1 = join(dirname(abspath(__file__)), 'simple.cfg')
+    c1 = Config(fname1)
+    fname2 = join(dirname(abspath(__file__)), 'test4.out')
+    c1.save(fname2)
+    c2 = Config(fname2)
+    assert c2['TOON'] == 'Bugs Bunny'
+    assert c2['QUOTE'] == 'The quick brown fox jumped over the lazy dog.'
+    c3 = Config()
+    c3.load(fname2)
+    assert c3['TOON'] == 'Bugs Bunny'
+    assert c3['QUOTE'] == 'The quick brown fox jumped over the lazy dog.'
+test4()
