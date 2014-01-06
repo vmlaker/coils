@@ -65,7 +65,7 @@ class SocketTalk:
         while sent_count < len(full_message):
             try:
                 msg = full_message[sent_count:]
-                count = self._sock.send(msg.encode())
+                count = self._sock.send(msg)
             except socket.error as err:
                 print('error')
                 return False
@@ -82,7 +82,7 @@ class SocketTalk:
         # length of the message remainder.
         header = ''
         while len(header) < self.HEADER_LENGTH:
-            chunk = self._sock.recv(self.HEADER_LENGTH - len(header)).decode()
+            chunk = self._sock.recv(self.HEADER_LENGTH - len(header))
             if chunk == '':
                 return None
             header += chunk        
@@ -91,7 +91,7 @@ class SocketTalk:
         # Then retrieve the remainder of the message.
         message = ''
         while len(message) < length:
-            chunk = self._sock.recv(length - len(message)).decode()
+            chunk = self._sock.recv(length - len(message))
             if chunk == '':
                 return None
             message += chunk
