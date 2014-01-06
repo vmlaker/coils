@@ -29,6 +29,20 @@ Classes
 
 ----
 
+.. autoclass:: coils.MapSockServer
+    :members: run
+    :undoc-members:
+
+.. autoclass:: coils.MapSockClient
+    :members: send
+    :undoc-members:
+
+.. autoclass:: coils.MapSockRequest
+    :members:
+    :undoc-members:
+
+----
+
 .. autoclass:: coils.RateTicker
     :members: tick
     :undoc-members:

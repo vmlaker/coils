@@ -31,8 +31,10 @@ class MapSockClient:
     def __init__(self, host, port):
         """
         Initialize the object.
-        host       -  socket host
-        port       -  socket port
+
+        *host*  -  socket host
+
+        *port*  -  socket port
         """
         self._logger = logging.getLogger(__name__)
         self._host = host
@@ -96,10 +98,13 @@ class MapSockServer:
     def __init__(self, host, port, on_action=None):
         """
         Initialize the server object.
-        host       -  socket host
-        port       -  socket port
-        on_action  -  callback upon action reception, 
-                      is called with action string
+
+        *host*       -  socket host
+
+        *port*       -  socket port
+
+        *on_action*  -  callback upon action reception, 
+                        is called with action string
         """
         self._logger = logging.getLogger(__name__)
         self._data = dict()
