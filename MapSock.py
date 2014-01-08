@@ -28,7 +28,7 @@ class MapSockClient:
     Client to the map server.
     """
 
-    def __init__(self, host, port):
+    def __init__(self, host, port, encode=True):
         """
         Initialize the object.
 
@@ -39,6 +39,7 @@ class MapSockClient:
         self._logger = logging.getLogger(__name__)
         self._host = host
         self._port = port
+        self._encode = encode
 
     def send(self, request):
         """
@@ -48,7 +49,7 @@ class MapSockClient:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.connect((self._host, self._port))
-        talk = SocketTalk.SocketTalk(sock)
+        talk = SocketTalk.SocketTalk(sock, encode=self._encode)
 
         self._logger.debug('Sending action %s'%request.action)
         if not talk.put(request.action):
@@ -95,7 +96,7 @@ class MapSockClient:
 
 
 class MapSockServer:
-    def __init__(self, host, port, on_action=None):
+    def __init__(self, host, port, on_action=None, encode=True):
         """
         Initialize the server object.
 
@@ -114,6 +115,7 @@ class MapSockServer:
         self._sock.listen(1)
         self._talk = None
         self._on_action = on_action
+        self._encode = encode
 
     def _send(self, message):
         """
@@ -140,7 +142,7 @@ class MapSockServer:
         while True:
             self._logger.debug('Accepting connection')
             conn, addr = self._sock.accept()
-            self._talk = SocketTalk.SocketTalk(conn)
+            self._talk = SocketTalk.SocketTalk(conn, encode=self._encode)
             
             self._logger.debug('Receiving action')
             action = self._receive()

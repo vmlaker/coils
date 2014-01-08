@@ -48,9 +48,10 @@ class SocketTalk:
         talk = SocketTalk(sock)
         return talk
         
-    def __init__(self, sock):
+    def __init__(self, sock, encode=True):
         """Initialize the object with a socket."""
         self._sock = sock
+        self._encode = encode
 
     def put(self, message):
         """Send the given *message*.
@@ -64,8 +65,9 @@ class SocketTalk:
         sent_count = 0
         while sent_count < len(full_message):
             try:
-                msg = full_message[sent_count:]
-                count = self._sock.send(msg.encode())
+                msg = full_message[sent_count:]                
+                msg = msg.encode() if self._encode else msg
+                count = self._sock.send(msg)
             except socket.error as err:
                 print('error')
                 return False
@@ -82,7 +84,8 @@ class SocketTalk:
         # length of the message remainder.
         header = ''
         while len(header) < self.HEADER_LENGTH:
-            chunk = self._sock.recv(self.HEADER_LENGTH - len(header)).decode()
+            chunk = self._sock.recv(self.HEADER_LENGTH - len(header))
+            chunk = chunk.decode() if self._encode else chunk
             if chunk == '':
                 return None
             header += chunk        
@@ -91,7 +94,8 @@ class SocketTalk:
         # Then retrieve the remainder of the message.
         message = ''
         while len(message) < length:
-            chunk = self._sock.recv(length - len(message)).decode()
+            chunk = self._sock.recv(length - len(message))
+            chunk = chunk.decode() if self._encode else chunk
             if chunk == '':
                 return None
             message += chunk
