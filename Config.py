@@ -32,6 +32,10 @@ class Config(object):
         with open(fname, 'w') as f:
             f.write(str(self))
 
+    def items(self):
+        """Return a copy of (key, value) pairs."""
+        return self._data.items()
+
     def __setitem__(self, key, val):
         """Add entry using index operator."""
         self._data[key] = val
