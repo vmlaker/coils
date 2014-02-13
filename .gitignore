@@ -1,2 +1,6 @@
 *.pyc
 test/*.out
+MANIFEST
+build
+dist
+doc/build
