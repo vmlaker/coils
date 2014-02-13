@@ -24,7 +24,7 @@ Classes
 ----
 
 .. autoclass:: coils.Config
-    :members: load, save, __setitem__, __getitem__, __str__
+    :members: load, save, items, __setitem__, __getitem__, __str__
     :undoc-members:
 
 ----

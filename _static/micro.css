@@ -11,9 +11,8 @@ body {
 }
 
 h2 {
-    padding: 0 0 0 10px;
-    background: whitesmoke;
-    border: solid 1px silver;
+    color: forestgreen;
+    font-style: italic;
 }
 
 pre {
@@ -35,12 +34,19 @@ a:hover {
     color: gray;
 }
 
+.document {
+    margin: 0 15px;
+}
+
 .related {
     font-size: 0.8em;
     margin: 10px 0;
     padding: 10px 0;
     background: honeydew;
     border: solid 1px green;
+
+    -moz-border-radius: 15px;
+    border-radius: 15px;
 }
 
 tt.literal {
@@ -50,7 +56,6 @@ tt.literal {
 }
 
 tt.py {
-    
     text-decoration: underline;
     color: black;
     border: 0;

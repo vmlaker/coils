@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>The Coils programming API &mdash; Coils 1.0.2 documentation</title>
+    <title>The Coils programming API &mdash; Coils 1.0.6 documentation</title>
     
     <link rel="stylesheet" href="_static/micro.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0.2',
+        VERSION:     '1.0.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,9 +25,9 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="author" title="About these documents" href="about.html" />
-    <link rel="top" title="Coils 1.0.2 documentation" href="index.html" />
-    <link rel="next" title="Building the docs" href="build_doc.html" />
-    <link rel="prev" title="How to install" href="install.html" />
+    <link rel="top" title="Coils 1.0.6 documentation" href="index.html" />
+    <link rel="next" title="For developers" href="developers.html" />
+    <link rel="prev" title="Coils, a Python library" href="index.html" />
  
 <a href="https://github.com/vmlaker/coils"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 
@@ -48,12 +48,12 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="build_doc.html" title="Building the docs"
+          <a href="developers.html" title="For developers"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="install.html" title="How to install"
+          <a href="index.html" title="Coils, a Python library"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Coils 1.0.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Coils 1.0.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -159,6 +159,12 @@ is an empty string and <em>empty_ok</em> is False.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="coils.Config.items">
+<tt class="descname">items</tt><big>(</big><big>)</big><a class="headerlink" href="#coils.Config.items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of (key, value) pairs.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="coils.Config.__setitem__">
 <tt class="descname">__setitem__</tt><big>(</big><em>key</em>, <em>val</em><big>)</big><a class="headerlink" href="#coils.Config.__setitem__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add entry using index operator.</p>
@@ -181,7 +187,7 @@ is an empty string and <em>empty_ok</em> is False.</p>
 <hr class="docutils" />
 <dl class="class">
 <dt id="coils.MapSockServer">
-<em class="property">class </em><tt class="descclassname">coils.</tt><tt class="descname">MapSockServer</tt><big>(</big><em>host</em>, <em>port</em>, <em>on_action=None</em><big>)</big><a class="headerlink" href="#coils.MapSockServer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">coils.</tt><tt class="descname">MapSockServer</tt><big>(</big><em>host</em>, <em>port</em>, <em>on_action=None</em>, <em>encode=True</em><big>)</big><a class="headerlink" href="#coils.MapSockServer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize the server object.</p>
 <p><em>host</em>       -  socket host</p>
 <p><em>port</em>       -  socket port</p>
@@ -199,7 +205,7 @@ is an empty string and <em>empty_ok</em> is False.</p>
 
 <dl class="class">
 <dt id="coils.MapSockClient">
-<em class="property">class </em><tt class="descclassname">coils.</tt><tt class="descname">MapSockClient</tt><big>(</big><em>host</em>, <em>port</em><big>)</big><a class="headerlink" href="#coils.MapSockClient" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">coils.</tt><tt class="descname">MapSockClient</tt><big>(</big><em>host</em>, <em>port</em>, <em>encode=True</em><big>)</big><a class="headerlink" href="#coils.MapSockClient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Client to the map server.</p>
 <p>Initialize the object.</p>
 <p><em>host</em>  -  socket host</p>
@@ -277,7 +283,7 @@ For example, [a, b, c, d] becomes [b, c, d, a].</p>
 <hr class="docutils" />
 <dl class="class">
 <dt id="coils.SocketTalk">
-<em class="property">class </em><tt class="descclassname">coils.</tt><tt class="descname">SocketTalk</tt><big>(</big><em>sock</em><big>)</big><a class="headerlink" href="#coils.SocketTalk" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">coils.</tt><tt class="descname">SocketTalk</tt><big>(</big><em>sock</em>, <em>encode=True</em><big>)</big><a class="headerlink" href="#coils.SocketTalk" title="Permalink to this definition">¶</a></dt>
 <dd><p>A simple layer of socket communication, implementing 
 send/receive messaging protocol where each (variable length) 
 message is prefixed with a (fixed length) header containing 
@@ -398,17 +404,17 @@ total time elapsed since construction.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="build_doc.html" title="Building the docs"
+          <a href="developers.html" title="For developers"
              >next</a> |</li>
         <li class="right" >
-          <a href="install.html" title="How to install"
+          <a href="index.html" title="Coils, a Python library"
              >previous</a> |</li>
-        <li><a href="index.html">Coils 1.0.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Coils 1.0.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2013, Velimir Mlaker.
-      Last updated on Jan 06, 2014.
+        &copy; Copyright 2014, Velimir Mlaker.
+      Last updated on Feb 13, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
