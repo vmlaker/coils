@@ -10,7 +10,11 @@ import socket
 import pickle
 
 # Import application modules.
-import SocketTalk
+# Keep Python 2 and 3 happy during nosetests.
+try:
+    import SocketTalk
+except ImportError:
+    from .SocketTalk import SocketTalk
 
 
 class MapSockRequest(object):
