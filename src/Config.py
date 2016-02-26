@@ -1,17 +1,21 @@
 """A micro config utility,
 loadable, saveable, one-line-per-entry config class."""
 
+import copy
+
 class Config(object):
     
     def __init__(self, fname=None):
         """Create config object, optionally load from file."""
+        self._fname = fname
         self._data = dict()
-        if fname:
-            self.load(fname)
+        if self._fname:
+            self.load(self._fname)
 
     def load(self, fname):
         """Load config with contents of file."""
-        with open(fname, 'r') as f:
+        self._fname = fname
+        with open(self._fname, 'r') as f:
             count = -1
             for line in f.readlines():
                 count += 1
@@ -23,9 +27,23 @@ class Config(object):
                 key = line.split()[0]
                 val = line[len(key):].lstrip()
                 if not val:
-                    print('Error line {0} file {1}'.format(count, fname))
+                    print('Error line {0} file {1}'.format(count, self._fname))
                     continue
                 self._data[key] = val
+
+    def reload(self):
+        """Clear and reload the dictionary.
+        Return True if successful, False otherwise."""
+        if self._fname is None:
+            return False
+        data_copy = self._data.copy()
+        self._data.clear()
+        try:
+            self.load(self._fname)
+        except:
+            self._data = data_copy
+            return False
+        return True
 
     def save(self, fname):
         """Save config to file."""

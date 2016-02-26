@@ -17,7 +17,7 @@ def test2():
     fname = join(dirname(abspath(__file__)), 'simple.cfg')
     c = Config(fname)
     assert c['TOON'] == 'Bugs Bunny'
-    assert c['QUOTE'] == 'The quick brown fox jumped over the lazy dog.'
+    assert c['QUOTE'] == "Ehh, what's up doc?"
 test2()
 
 def test3():
@@ -40,9 +40,50 @@ def test4():
     c1.save(fname2)
     c2 = Config(fname2)
     assert c2['TOON'] == 'Bugs Bunny'
-    assert c2['QUOTE'] == 'The quick brown fox jumped over the lazy dog.'
+    assert c2['QUOTE'] == "Ehh, what's up doc?"
     c3 = Config()
     c3.load(fname2)
     assert c3['TOON'] == 'Bugs Bunny'
-    assert c3['QUOTE'] == 'The quick brown fox jumped over the lazy dog.'
+    assert c3['QUOTE'] == "Ehh, what's up doc?"
 test4()
+
+def test5():
+    """Create empty config, and try to reload."""
+    from Config import Config
+    c = Config()
+    assert c.reload() == False
+test5()
+
+def test6():
+    """Create from file and test reload."""
+    from os.path import join, dirname, abspath
+    from Config import Config
+    f = join(dirname(abspath(__file__)), 'simple.cfg')
+    c = Config(f)
+    c['QUOTE'] = "Gee, ain't I a stinker."
+    assert c['QUOTE'] == "Gee, ain't I a stinker."
+    assert c.reload() == True
+    assert c['QUOTE'] == "Ehh, what's up doc?"
+    c['ORIGIN'] = 'Warner Bros.'
+    assert c['ORIGIN'] == 'Warner Bros.'
+    assert c.reload() == True
+    assert c['ORIGIN'] == None
+test6()
+
+def test7():
+    """Create empty, and test load and reload."""
+    from os.path import join, dirname, abspath
+    from Config import Config
+    c = Config()
+    assert c.reload() == False
+    f = join(dirname(abspath(__file__)), 'simple.cfg')
+    c.load(f)
+    c['QUOTE'] = "Gee, ain't I a stinker."
+    assert c['QUOTE'] == "Gee, ain't I a stinker."
+    assert c.reload() == True
+    assert c['QUOTE'] == "Ehh, what's up doc?"
+    c['ORIGIN'] = 'Warner Bros.'
+    assert c['ORIGIN'] == 'Warner Bros.'
+    assert c.reload() == True
+    assert c['ORIGIN'] == None
+test7()
