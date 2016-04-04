@@ -2,16 +2,26 @@
 loadable, saveable, one-line-per-entry config class."""
 
 import copy
+import threading
 
 class Config(object):
-    
+
+    def _deco(func):
+        """Decorator that protects function with a lock."""
+        def wrap(self, *args, **kwargs):
+            with self._rlock:
+                return func(self, *args, **kwargs)
+        return wrap
+
     def __init__(self, fname=None):
         """Create config object, optionally load from file."""
         self._fname = fname
         self._data = dict()
+        self._rlock = threading.RLock()
         if self._fname:
             self.load(self._fname)
 
+    @_deco
     def load(self, fname):
         """Load config with contents of file."""
         self._fname = fname
@@ -31,6 +41,7 @@ class Config(object):
                     continue
                 self._data[key] = val
 
+    @_deco
     def reload(self):
         """Clear and reload the dictionary.
         Return True if successful, False otherwise."""
@@ -45,25 +56,30 @@ class Config(object):
             return False
         return True
 
+    @_deco
     def save(self, fname):
         """Save config to file."""
         with open(fname, 'w') as f:
             f.write(str(self))
 
+    @_deco
     def items(self):
         """Return a copy of (key, value) pairs."""
         return self._data.items()
 
+    @_deco
     def __setitem__(self, key, val):
         """Add entry using index operator."""
         self._data[key] = val
         
+    @_deco
     def __getitem__(self, key):
         """Retrieve entry using index operator."""
         if key not in self._data:
             return None
         return self._data[key]
 
+    @_deco
     def __str__(self):
         """Return string representation."""
         result = ''

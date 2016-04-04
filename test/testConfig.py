@@ -87,3 +87,23 @@ def test7():
     assert c.reload() == True
     assert c['ORIGIN'] == None
 test7()
+
+def test8():
+    """Test thread safety."""
+    from os.path import join, dirname, abspath
+    from threading import Thread
+    from Config import Config
+    f = join(dirname(abspath(__file__)), 'simple.cfg')
+    c = Config(f)
+    def threaded(config):
+        for ii in range(100):
+            config.reload()
+            assert config['TOON'] == 'Bugs Bunny'
+    threads = list()
+    for ii in range(100):
+        threads.append(Thread(target=threaded, args=(c,)))
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+test8()

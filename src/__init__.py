@@ -1,4 +1,4 @@
-__version__ = '1.0.8'
+__version__ = '1.0.9'
 from .Averager import Averager
 from .Config import Config
 from .MapSock import MapSockServer, MapSockClient, MapSockRequest
