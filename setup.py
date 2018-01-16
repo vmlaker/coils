@@ -1,5 +1,5 @@
 from distutils.core import setup
-from src import __version__
+from coils import __version__
 
 setup(
     name         = 'coils',
@@ -10,7 +10,7 @@ setup(
     author_email = 'velimir.mlaker@gmail.com',
     license      = 'MIT',
     #long_description = open('README.rst').read(),
-    package_dir  = {'coils' : 'src'},
+    package_dir  = {'coils' : 'coils'},
     packages     = ['coils'],
     classifiers  = [
         'Development Status :: 5 - Production/Stable',
