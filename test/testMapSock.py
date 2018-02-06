@@ -2,7 +2,7 @@ def test1():
     """Test the MapSock client/server."""
 
     from threading import Thread
-    from MapSock import MapSockServer, MapSockClient, MapSockRequest
+    from coils.MapSock import MapSockServer, MapSockClient, MapSockRequest
 
     host = 'localhost'
     port = 50002

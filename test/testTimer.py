@@ -2,7 +2,7 @@ def test1():
     """Test Timer class."""
     from time import sleep
     from datetime import timedelta
-    from Timer import Timer
+    from coils import Timer
     timer = Timer()
     sleep(0.001)
     assert timer.get() > timedelta(seconds=0.001)

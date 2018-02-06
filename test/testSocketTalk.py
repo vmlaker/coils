@@ -1,6 +1,6 @@
 def test1():
     """Test the SocketTalk peers."""
-    from SocketTalk import SocketTalk
+    from coils.SocketTalk import SocketTalk
     talk1, talk2 = SocketTalk.pair()
     talk1.put('one')
     assert talk2.get() == 'one'
@@ -14,7 +14,7 @@ test1()
 def test2():
     """Test the SocketTalk client/server."""
     from threading import Thread
-    from SocketTalk import SocketTalk
+    from coils.SocketTalk import SocketTalk
 
     addr = 'localhost', 50002
     def client():

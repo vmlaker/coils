@@ -2,7 +2,7 @@
 
 def test1():
     """Start from empty, set and get."""
-    from Config import Config
+    from coils.Config import Config
     c = Config()
     c['NAME'] = 'Bender'
     c['SURNAME'] = 'Rodríguez'
@@ -13,7 +13,7 @@ test1()
 def test2():
     """Read from file and get."""
     from os.path import join, dirname, abspath
-    from Config import Config
+    from coils.Config import Config
     fname = join(dirname(abspath(__file__)), 'simple.cfg')
     c = Config(fname)
     assert c['TOON'] == 'Bugs Bunny'
@@ -23,7 +23,7 @@ test2()
 def test3():
     """Read from file containing erroneous line, and get."""
     from os.path import join, dirname, abspath
-    from Config import Config
+    from coils.Config import Config
     fname = join(dirname(abspath(__file__)), 'simple2.cfg')
     c = Config(fname)
     assert c['Kingdom'] == 'Animalia'
@@ -33,7 +33,7 @@ test3()
 def test4():
     """Read from file, get, save, load via constructor and load()."""
     from os.path import join, dirname, abspath
-    from Config import Config
+    from coils.Config import Config
     fname1 = join(dirname(abspath(__file__)), 'simple.cfg')
     c1 = Config(fname1)
     fname2 = join(dirname(abspath(__file__)), 'test4.out')
@@ -49,7 +49,7 @@ test4()
 
 def test5():
     """Create empty config, and try to reload."""
-    from Config import Config
+    from coils.Config import Config
     c = Config()
     assert c.reload() == False
 test5()
@@ -57,7 +57,7 @@ test5()
 def test6():
     """Create from file and test reload."""
     from os.path import join, dirname, abspath
-    from Config import Config
+    from coils.Config import Config
     f = join(dirname(abspath(__file__)), 'simple.cfg')
     c = Config(f)
     c['QUOTE'] = "Gee, ain't I a stinker."
@@ -73,7 +73,7 @@ test6()
 def test7():
     """Create empty, and test load and reload."""
     from os.path import join, dirname, abspath
-    from Config import Config
+    from coils.Config import Config
     c = Config()
     assert c.reload() == False
     f = join(dirname(abspath(__file__)), 'simple.cfg')
@@ -92,7 +92,7 @@ def test8():
     """Test thread safety."""
     from os.path import join, dirname, abspath
     from threading import Thread
-    from Config import Config
+    from coils.Config import Config
     f = join(dirname(abspath(__file__)), 'simple.cfg')
     c = Config(f)
     def threaded(config):
