@@ -1,9 +1,7 @@
-.
 y
 _
 Coils
 Velimir Mlaker
-1.1.0
 1.1.0
 en
 .rst
