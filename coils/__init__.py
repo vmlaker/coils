@@ -1,4 +1,3 @@
-__version__ = '1.1.0'
 from .Averager import Averager
 from .Config import Config
 from .MapSock import MapSockServer, MapSockClient, MapSockRequest
@@ -9,3 +8,5 @@ from .SortedList import SortedList
 from .String import string2time, time2string, time2levels, time2dir, time2fname
 from .Timer import Timer
 from .UserInput import user_input
+
+__version__ = '1.1.0'
