@@ -15,11 +15,15 @@ doc: venv
 	# Needed to have autodoc.
 	cd doc && sed -i s:"extensions = \[":"extensions = \['sphinx.ext.autodoc',":g source/conf.py
 
-	# So that the class and __init__ doc are added as class docstrings.
+	cd doc && echo '\n# Add class and __init__ docstrings to the class doc.' >> source/conf.py
 	cd doc && echo "autoclass_content = 'both'" >> source/conf.py
 
-	# So that module name *is not* prepended to all object names.
+	cd doc && echo '\n# Do not prepend module name to all object names.' >> source/conf.py
 	cd doc && echo "add_module_names = False" >> source/conf.py
+
+	cp logo.png doc/source/_static
+	cd doc && echo '\n# Add the logo.' >> source/conf.py
+	cd doc && echo "html_logo = 'logo.png'" >> source/conf.py
 
 	# Generate the API docxs.
 	cd doc && ../venv/bin/sphinx-apidoc -o source ../coils/
