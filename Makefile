@@ -18,6 +18,9 @@ doc: venv
 	# So that the class and __init__ doc are added as class docstrings.
 	cd doc && echo "autoclass_content = 'both'" >> source/conf.py
 
+	# So that module name *is not* prepended to all object names.
+	cd doc && echo "add_module_names = False" >> source/conf.py
+
 	# Generate the API docxs.
 	cd doc && ../venv/bin/sphinx-apidoc -o source ../coils/
 
