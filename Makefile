@@ -5,7 +5,7 @@ venv: requirements.txt
 
 doc: venv
 	rm -rf doc
-	venv/bin/sphinx-quickstart doc < sphinx-qs-input.txt
+	venv/bin/sphinx-quickstart doc < sphinx-qs-stdin.txt
 
 	# So that it knows where Coils is installed.
 	cd doc && sed -i s:'# import os':'import os':g source/conf.py
@@ -26,7 +26,7 @@ doc: venv
 	cd doc && echo "html_logo = 'logo.png'" >> source/conf.py
 
 	# Generate the API docxs.
-	cd doc && ../venv/bin/sphinx-apidoc -o source ../coils/
+	cd doc && ../venv/bin/sphinx-apidoc --no-headings -o source ../coils/
 
 	# So that make command below uses the right sphinx-build executable.
 	cd doc && sed -i s:'sphinx-build':`realpath ../venv/bin/sphinx-build`:g Makefile
