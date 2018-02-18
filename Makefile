@@ -31,6 +31,8 @@ doc: venv
 	# So that make command below uses the right sphinx-build executable.
 	cd doc && sed -i s:'sphinx-build':`realpath ../venv/bin/sphinx-build`:g Makefile
 
+	cp index.rst doc/source
+
 	cd doc && make html
 
 clean:
