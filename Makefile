@@ -3,6 +3,9 @@ venv: requirements.txt
 	./venv/bin/pip install -r requirements.txt
 	ln -sf ./venv/bin/python .
 
+VERSION = `./python -c 'import coils; print(coils.__version__)'`
+DATE = `date +"%B %e, %Y"`
+
 doc: venv
 	rm -rf doc
 	venv/bin/sphinx-quickstart doc < sphinx-qs-stdin.txt
@@ -15,11 +18,14 @@ doc: venv
 	# Needed to have autodoc.
 	sed -i s:"extensions = \[":"extensions = \['sphinx.ext.autodoc',":g doc/source/conf.py
 
-	echo '\n# Add class and __init__ docstrings to the class doc.' >> doc/source/conf.py
-	echo "autoclass_content = 'both'" >> doc/source/conf.py
+	#echo '\n# Add class and __init__ docstrings to the class doc.' >> doc/source/conf.py
+	#echo "autoclass_content = 'both'" >> doc/source/conf.py
 
 	echo '\n# Do not prepend module name to all object names.' >> doc/source/conf.py
 	echo "add_module_names = False" >> doc/source/conf.py
+
+	echo '\n# Show the toctree in sidebar of each page.' >> doc/source/conf.py
+	echo "html_sidebars = { '**': ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'], }" >> doc/source/conf.py
 
 	cp logo.png doc/source/_static
 	echo '\n# Add the logo.' >> doc/source/conf.py
@@ -31,8 +37,9 @@ doc: venv
 	# So that make command below uses the right sphinx-build executable.
 	sed -i s:'sphinx-build':`realpath venv/bin/sphinx-build`:g doc/Makefile
 
-	cp index.rst doc/source
-
+	cp *.rst doc/source
+	sed -i s:"@VERSION@":$(VERSION):g doc/source/*.rst
+	sed -i s*"@DATE@"*"$(DATE)"*g doc/source/*.rst
 	cd doc && make html
 
 clean:

@@ -1,17 +1,22 @@
-Coils
-=====
+.. index:
 
-Coils is a package of Python codes useful to the author.
+Coils, a Python library
+=======================
+
+Latest version: @VERSION@
+
+Updated on: @DATE@
+
+You can install Coils using pip:
+::
+   
+   pip install coils
+
+
+Find out more about Coils:
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 1
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   API <coils>
+   about
