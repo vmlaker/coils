@@ -18,8 +18,8 @@ doc: venv
 	# Needed to have autodoc.
 	sed -i s:"extensions = \[":"extensions = \['sphinx.ext.autodoc',":g doc/source/conf.py
 
-	echo '\n# Do not prepend module name to all object names.' >> doc/source/conf.py
-	echo "add_module_names = False" >> doc/source/conf.py
+	echo '\n# Add class and __init__ docstrings to the class doc.' >> doc/source/conf.py
+	echo "autoclass_content = 'both'" >> doc/source/conf.py
 
 	echo '\n# Show the toctree in sidebar of each page.' >> doc/source/conf.py
 	echo "html_sidebars = { '**': ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'], }" >> doc/source/conf.py
