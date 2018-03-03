@@ -53,7 +53,7 @@ class MapSockClient:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.connect((self._host, self._port))
-        talk = SocketTalk.SocketTalk(sock, encode=self._encode)
+        talk = SocketTalk(sock, encode=self._encode)
 
         self._logger.debug('Sending action %s'%request.action)
         if not talk.put(request.action):
@@ -146,7 +146,7 @@ class MapSockServer:
         while True:
             self._logger.debug('Accepting connection')
             conn, addr = self._sock.accept()
-            self._talk = SocketTalk.SocketTalk(conn, encode=self._encode)
+            self._talk = SocketTalk(conn, encode=self._encode)
             
             self._logger.debug('Receiving action')
             action = self._receive()
