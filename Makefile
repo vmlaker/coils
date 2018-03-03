@@ -3,6 +3,9 @@ venv: requirements.txt
 	./venv/bin/pip install -r requirements.txt
 	ln -sf ./venv/bin/python .
 
+test: venv
+	./venv/bin/nose2 < coils/test/user_input.txt
+
 VERSION = `./python -c 'import coils; print(coils.__version__)'`
 DATE = `date +"%B %e, %Y"`
 
