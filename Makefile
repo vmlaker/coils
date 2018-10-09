@@ -45,4 +45,5 @@ docs: venv
 	cd docs && make html
 
 clean:
-	rm -rf docs python venv
+	rm -rf build docs python venv
+	find . -name '*.pyc' -exec rm {} \;
