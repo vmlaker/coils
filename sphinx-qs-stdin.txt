@@ -2,11 +2,11 @@ y
 _
 Coils
 Velimir Mlaker
-1.1.0
+2.0.0
 en
 .rst
 index
-n
+index.rst
 n
 n
 n
@@ -15,7 +15,7 @@ y
 n
 n
 n
-y
 n
+y
 y
 n
