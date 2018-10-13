@@ -42,5 +42,5 @@ docs: venv
 
 clean:
 	rm -rf build dist docs python venv
-	rm -rf .eggs coils.egg-info
+	rm -rf .coverage .eggs coils.egg-info
 	find . -name '*.pyc' -exec rm {} \;
