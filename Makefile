@@ -6,7 +6,8 @@ venv: requirements.txt
 	ln -sf ./venv/bin/python .
 
 test: venv
-	./venv/bin/nose2 < coils/test/user_input.txt
+	./python setup.py install
+	./python setup.py test
 
 VERSION = `./python -c 'import coils; print(coils.__version__)'`
 DATE = `date +"%B %e, %Y"`
@@ -40,5 +41,6 @@ docs: venv
 	./venv/bin/sphinx-build -b html docs/ docs/_build/html/
 
 clean:
-	rm -rf build docs python venv
+	rm -rf build dist docs python venv
+	rm -rf .eggs coils.egg-info
 	find . -name '*.pyc' -exec rm {} \;

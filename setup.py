@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 exec(open('./coils/version.py').read())
 
@@ -11,6 +11,16 @@ setup(
     author_email='velimir.mlaker@gmail.com',
     license='MIT',
     packages=['coils'],
+    #setup_requires=[
+    #    'pytest-runner==4.2',
+    #],
+    tests_require=[
+        'coverage==4.5.1',
+        'pydocstyle==2.1.1',
+        'pytest==3.8.2',
+        'pytest-cov==2.6.0',
+        'pytest-pep8==1.0.6',
+    ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
@@ -19,5 +29,5 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
         'Topic :: Software Development :: Libraries :: Python Modules',
-        ],
-    )
+    ],
+)
