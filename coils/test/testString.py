@@ -20,6 +20,7 @@ def test1():
 
 test1()
 
+
 def test11():
     """Test string2time() function with partial strings."""
 
@@ -52,9 +53,10 @@ def test11():
         ('2013-07-12 08:26:22.4567', '2013-07-12 08:26:22.456700'),
         ('2013-07-12 08:26:22.45678', '2013-07-12 08:26:22.456780'),
         ('2013-07-12 08:26:22.456789', '2013-07-12 08:26:22.456789'),
-        ):
+    ):
         assert str(string2time(arg)) == out
 test11()
+
 
 def test2():
     """Test time2string() function."""
@@ -63,6 +65,7 @@ def test2():
     a = datetime.now()
     assert '{0}'.format(a) == '{0}'.format(time2string(a))
 test2()
+
 
 def test3():
     """Test time2levels() function."""
@@ -74,6 +77,7 @@ def test3():
     assert time2levels(t2) == ['2013', '06', '15', '16', '30']
 test3()
 
+
 def test4():
     """Test time2dir() function."""
     from os.path import join
@@ -82,6 +86,7 @@ def test4():
     t1 = string2time('2013-06-15 16:30:18')
     assert time2dir(t1) == join('2013', '06', '15', '16', '30')
 test4()
+
 
 def test5():
     """Test time2fname() function."""

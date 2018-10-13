@@ -2,6 +2,7 @@
 
 import collections
 
+
 class Averager(object):
     """Keeps a running average with limited history."""
 

@@ -10,6 +10,7 @@ def test1():
     assert a.add(3.0) == 3.0  # 3.0 / 1
 test1()
 
+
 def test2():
     """Test Averager."""
     from coils.Averager import Averager

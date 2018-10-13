@@ -5,7 +5,7 @@ exec(open('./coils/version.py').read())
 setup(
     name='coils',
     version=__version__,
-    description='A small library of generic codes written in 100% pure Python.',
+    description='A tiny library of generic codes written in 100% pure Python.',
     url='http://vmlaker.github.io/coils',
     author='Velimir Mlaker',
     author_email='velimir.mlaker@gmail.com',

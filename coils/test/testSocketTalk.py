@@ -11,12 +11,14 @@ def test1():
     talk1.close()
 test1()
 
+
 def test2():
     """Test the SocketTalk client/server."""
     from threading import Thread
     from coils.SocketTalk import SocketTalk
 
     addr = 'localhost', 50002
+
     def client():
         talk = SocketTalk.client(addr)
         talk.put('one')
@@ -32,4 +34,3 @@ def test2():
     Thread(target=client).start()
     Thread(target=server).start()
 test2()
-

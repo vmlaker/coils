@@ -11,8 +11,8 @@ def test1():
     server = MapSockServer(host, port)
     thread = Thread(target=server.run)
     thread.start()
-    
-    # Send set, get, stop.    
+
+    # Send set, get, stop.
     client = MapSockClient(host, port)
     assert client.send(MapSockRequest('size')) == '0'
     assert client.send(MapSockRequest('set', 'tool', 'wrench')) == 'ok'

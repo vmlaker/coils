@@ -5,9 +5,10 @@ def test1():
     assert a.tick() == (1.0,)
 test1()
 
+
 def test2():
     """Tick a three-period ticker."""
     from coils.RateTicker import RateTicker
-    a = RateTicker((1,2,5,))
+    a = RateTicker((1, 2, 5,))
     assert a.tick() == (1.0, 0.5, 0.2)
 test2()

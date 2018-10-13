@@ -3,7 +3,7 @@ def test1():
 
     from coils.Ring import Ring
 
-    a = Ring([0,1,2])
+    a = Ring([0, 1, 2])
     assert a[0] == 0
     assert a[1] == 1
     assert a[2] == 2

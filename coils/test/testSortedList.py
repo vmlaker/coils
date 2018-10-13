@@ -10,6 +10,7 @@ def test1():
     assert a.getCountLT(5) == 0
 test1()
 
+
 def test2():
     """Construct from list."""
     from coils.SortedList import SortedList

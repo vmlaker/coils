@@ -8,12 +8,15 @@ try:
 except NameError:
     pass
 
-def user_input(field, default='', choices=None, password=False, empty_ok=False, accept=False):
+
+def user_input(
+        field, default='', choices=None, password=False,
+        empty_ok=False, accept=False):
     """Prompt user for input until a value is retrieved or default
     is accepted. Return the input.
 
     Arguments:
-    
+
     *field* - Description of the input being prompted for.
 
     *default* - Default value for the input accepted with a Return-key.
@@ -24,7 +27,7 @@ def user_input(field, default='', choices=None, password=False, empty_ok=False, 
 
     *accept* - Whether to skip getting actual user input and just accept
     the default value, unless prevented by the combination of
-    arguments *empty_ok* and *default*. That is, unless *default* 
+    arguments *empty_ok* and *default*. That is, unless *default*
     is an empty string and *empty_ok* is False.
     """
     result = ''
