@@ -1,5 +1,6 @@
 from distutils.core import setup
-from coils import __version__
+
+exec(open('./coils/version.py').read())
 
 setup(
     name='coils',
