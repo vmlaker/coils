@@ -4,6 +4,7 @@ The code, before slight variation in turn() method, was taken from:
   http://code.activestate.com/recipes/52246-implementing-a-circular-data-structure-using-lists
 """
 
+
 class Ring:
     """Circular data structure implemented as a list."""
 
@@ -12,7 +13,7 @@ class Ring:
         if not donor:
             raise 'Ring must have at least one element.'
         self._data = donor
-        
+
     def __repr__(self):
         return repr(self._data)
 
@@ -24,7 +25,7 @@ class Ring:
 
     def turn(self):
         """Turn the ring for a single position.
-        For example, [a, b, c, d] becomes [b, c, d, a].""" 
+        For example, [a, b, c, d] becomes [b, c, d, a]."""
         first = self._data.pop(0)
         self._data.append(first)
 

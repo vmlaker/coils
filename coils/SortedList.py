@@ -2,23 +2,17 @@
 
 import bisect
 
+
 class SortedList(object):
     """Maintains a list of sorted items, with fast trimming
     using less-than/greater-than comparison."""
-    
+
     def __init__(self, donor=list()):
         """Initialize the object with a copy of the donor list, sorted."""
         self._list = sorted(donor[:])
-        
+
     def add(self, item):
         """Add item to the list while maintaining sorted order."""
-        #
-        # Native list append() should work, but
-        # only if we guaranteed that we're adding the "greatest" item.
-        #
-        #self._list.append(item)
-        #
-        # But instead we'll use the sorted insertion.
         bisect.insort_left(self._list, item)
 
     def getCountLT(self, item):

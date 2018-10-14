@@ -2,6 +2,7 @@
 
 import datetime
 
+
 class Timer:
     """Times duration of code blocks."""
 
@@ -19,7 +20,7 @@ class Timer:
 
     def get(self):
         """Return a :class:`datetime.timedelta` object representing
-        time elapsed since object construction, 
+        time elapsed since object construction,
         or since last call to this function, whichever is more recent."""
         now = datetime.datetime.now()
         result = now - self._previous

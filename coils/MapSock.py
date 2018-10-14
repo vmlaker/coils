@@ -55,18 +55,18 @@ class MapSockClient:
         sock.connect((self._host, self._port))
         talk = SocketTalk(sock, encode=self._encode)
 
-        self._logger.debug('Sending action %s'%request.action)
+        self._logger.debug('Sending action %s' % request.action)
         if not talk.put(request.action):
-            self._logger.error('Failed to send action %s'%request.action)
+            self._logger.error('Failed to send action %s' % request.action)
             return None
 
-        if request.key != None:
-            self._logger.debug('Sending key %s'%request.key)
+        if request.key is not None:
+            self._logger.debug('Sending key %s' % request.key)
             if not talk.put(request.key):
-                self._logger.error('Failed to send key %s'%request.key)
+                self._logger.error('Failed to send key %s' % request.key)
                 return None
 
-        if request.value != None:
+        if request.value is not None:
             self._logger.debug('Sending value')
             if not talk.put(request.value):
                 self._logger.error('Failed to send value')
@@ -77,8 +77,8 @@ class MapSockClient:
         if not response:
             self._logger.error('Failed to receive status')
             return None
-        self._logger.debug('Status response = %s'%response)
-        
+        self._logger.debug('Status response = %s' % response)
+
         if request.action in ('get', 'size', 'keys') and response == 'ok':
             self._logger.debug('Receiving value')
             response = talk.get()
@@ -95,7 +95,7 @@ class MapSockClient:
         except:
             self._logger.error('Failed to shutdown')
         sock.close()
-        
+
         return response
 
 
@@ -108,7 +108,7 @@ class MapSockServer:
 
         *port*       -  socket port
 
-        *on_action*  -  callback upon action reception, 
+        *on_action*  -  callback upon action reception,
                         is called with action string
         """
         self._logger = logging.getLogger(__name__)
@@ -124,10 +124,10 @@ class MapSockServer:
     def _send(self, message):
         """
         Return response message to client.
-        """        
+        """
         result = self._talk.put(message)
         if not result:
-            self._logger.error('Failed to send "%s"'%message)
+            self._logger.error('Failed to send "%s"' % message)
         return result
 
     def _receive(self):
@@ -138,7 +138,7 @@ class MapSockServer:
         if not result:
             self._logger.error('Failed to receive')
         return result
-            
+
     def run(self):
         """
         Continuously retrieve client requests until given "stop" request.
@@ -147,10 +147,10 @@ class MapSockServer:
             self._logger.debug('Accepting connection')
             conn, addr = self._sock.accept()
             self._talk = SocketTalk(conn, encode=self._encode)
-            
+
             self._logger.debug('Receiving action')
             action = self._receive()
-            
+
             if self._on_action:
                 self._on_action(action)
 
@@ -183,7 +183,7 @@ class MapSockServer:
                     self._send('ok')
                     self._logger.debug('Sending value')
                     self._send(value)
-                    
+
             elif action == 'del':
                 try:
                     del self._data[key]
@@ -193,7 +193,7 @@ class MapSockServer:
                 else:
                     self._logger.debug('Sending "ok"')
                     self._send('ok')
-                
+
             elif action == 'size':
                 self._send('ok')
                 self._send(str(len(self._data)))
@@ -204,7 +204,7 @@ class MapSockServer:
                 self._send(pickled)
 
             else:
-                self._send('unknown action %s'%action)
+                self._send('unknown action %s' % action)
 
             self._logger.debug('Closing')
             try:

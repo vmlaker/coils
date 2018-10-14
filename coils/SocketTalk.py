@@ -2,11 +2,12 @@
 
 import socket
 
+
 class SocketTalk:
-    """A simple layer of socket communication, implementing 
-    send/receive messaging protocol where each (variable length) 
-    message is prefixed with a (fixed length) header containing 
-    the length of the remaining message data string. 
+    """A simple layer of socket communication, implementing
+    send/receive messaging protocol where each (variable length)
+    message is prefixed with a (fixed length) header containing
+    the length of the remaining message data string.
 
     Ideas for protocol and byte-handling are borrowed from:
        http://docs.python.org/howto/sockets.html.
@@ -47,7 +48,7 @@ class SocketTalk:
                 sock.close()
         talk = SocketTalk(sock)
         return talk
-        
+
     def __init__(self, sock, encode=True):
         """Initialize the object with a socket."""
         self._sock = sock
@@ -65,7 +66,7 @@ class SocketTalk:
         sent_count = 0
         while sent_count < len(full_message):
             try:
-                msg = full_message[sent_count:]                
+                msg = full_message[sent_count:]
                 msg = msg.encode() if self._encode else msg
                 count = self._sock.send(msg)
             except socket.error as err:
@@ -88,7 +89,7 @@ class SocketTalk:
             chunk = chunk.decode() if self._encode else chunk
             if chunk == '':
                 return None
-            header += chunk        
+            header += chunk
         length = int(header)
 
         # Then retrieve the remainder of the message.
