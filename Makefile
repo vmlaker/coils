@@ -9,6 +9,15 @@ test: venv
 	./python setup.py install
 	./python setup.py test
 
+dist: clean venv
+	./python setup.py sdist bdist_wheel
+
+testpypi: dist
+	./venv/bin/twine upload --repository testpypi dist/*
+
+pypi: dist
+	./venv/bin/twine upload dist/*
+
 VERSION = `./python -c 'import coils; print(coils.__version__)'`
 DATE = `date +"%B %e, %Y"`
 TIMESTAMP = $(shell date +%Y-%m-%d_%H:%M:%S)
