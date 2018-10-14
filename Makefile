@@ -32,7 +32,6 @@ docs: venv
 	  -v `./python -c 'import coils; print(coils.__version__)'` \
 	  --dot=_ \
 	  --ext-autodoc \
-	  --ext-viewcode \
 	  --no-batchfile \
 	  --no-makefile
 
@@ -43,9 +42,12 @@ docs: venv
 	echo '\n# Add class and __init__ docstrings to the class doc.' >> docs/conf.py
 	echo "autoclass_content = 'both'" >> docs/conf.py
 
-	cp *.rst docs
+	sed -i s:"exclude_patterns = \[":"exclude_patterns = \['modules.rst', ":g docs/conf.py
+
+	cp about.rst coils.rst index.rst docs
 	sed -i s:"@VERSION@":$(VERSION):g docs/*.rst
 	sed -i s*"@DATE@"*"$(DATE)"*g docs/*.rst
+
 	./venv/bin/sphinx-apidoc -o docs coils
 	./venv/bin/sphinx-build -b html docs/ docs/_build/html/
 
