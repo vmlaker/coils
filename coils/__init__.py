@@ -1,5 +1,4 @@
 from .Averager import Averager
-from .Config import Config
 from .MapSock import MapSockServer, MapSockClient, MapSockRequest
 from .RateTicker import RateTicker
 from .Ring import Ring
