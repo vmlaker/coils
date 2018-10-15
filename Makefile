@@ -51,7 +51,34 @@ docs: venv
 	./venv/bin/sphinx-apidoc -o docs coils
 	./venv/bin/sphinx-build -b html docs/ docs/_build/html/
 
+init-gh-pages: docs
+	rm -rf html docs/_build/html
+	ln -sf ../../html docs/_build/html
+	git clone git@github.com:vmlaker/coils.git html
+	cd html && \
+	git branch gh-pages && \
+	git checkout gh-pages && \
+	git symbolic-ref HEAD refs/heads/gh-pages && \
+	rm .git/index && \
+	git clean -fdx
+	git ci -m 'First pages commit.'
+	git push origin gh-pages
+
+MASTER_VERSION = $(shell git log master -1 | head -1)
+
+gh-pages: docs
+	rm -rf html
+	git clone https://github.com/vmlaker/coils.git html
+	#git clone git@github.com:vmlaker/coils.git html
+	cd html && git checkout gh-pages
+	rm -rf html/*
+	cp -r docs/_build/html/* html
+	cd html && touch .nojekyll
+	#cd html && git add .
+	#cd html && git commit -m 'Update gh-pages for $(MASTER_VERSION).'
+	#cd html && git push origin gh-pages
+
 clean:
 	rm -rf build dist docs python venv
-	rm -rf .coverage .eggs coils.egg-info
+	rm -rf .coverage .eggs coils.egg-info index.tex
 	find . -name '*.pyc' -exec rm {} \;
