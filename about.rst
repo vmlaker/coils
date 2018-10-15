@@ -3,10 +3,8 @@
 About
 =====
 
-Coils is a small Python library of generic codes
-written in 100% pure Python.
+Coils is written by `Velimir Mlaker <http://github.com/vmlaker>`_.
 
-The latest version is @VERSION@,
-updated on @DATE@.
+The latest version is @VERSION@ updated on @DATE@.
 
 Coils is `a repo on GitHub <http://github.com/vmlaker/coils>`_.

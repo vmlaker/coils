@@ -1,19 +1,14 @@
 .. index:
 
-Coils, a Python library
-=======================
+Coils
+=====
 
-Latest version: @VERSION@
-
-Updated on: @DATE@
-
-You can install Coils using pip:
+Coils is a small Python library of generic codes written in 100% pure Python. Install it using pip:
 ::
    
    pip install coils
 
-
-Find out more about Coils:
+Learn more about Coils by checking out the documentation:
 
 .. toctree::
    :maxdepth: 1
