@@ -1,0 +1,401 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>The Coils programming API &#8212; Coils 2.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="About" href="about.html" />
+    <link rel="prev" title="Coils" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="the-coils-programming-api">
+<span id="api"></span><h1>The Coils programming API<a class="headerlink" href="#the-coils-programming-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="coils.string2time">
+<code class="descclassname">coils.</code><code class="descname">string2time</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.string2time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code> object from given string,
+or <code class="docutils literal notranslate"><span class="pre">None</span></code> if failed to translate.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="coils.time2string">
+<code class="descclassname">coils.</code><code class="descname">time2string</code><span class="sig-paren">(</span><em>tstamp</em>, <em>micro=True</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.time2string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code> object,
+return a formatted time string.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="coils.time2levels">
+<code class="descclassname">coils.</code><code class="descname">time2levels</code><span class="sig-paren">(</span><em>tstamp</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.time2levels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code> object,
+return a list of directory levels (as strings).</p>
+<p>For example, given “2013-09-08 13:01:44”,
+return [‘2013’, ‘09’, ‘08’, ‘13’, ‘01’]</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="coils.time2dir">
+<code class="descclassname">coils.</code><code class="descname">time2dir</code><span class="sig-paren">(</span><em>tstamp</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.time2dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code> object,
+return a path assembled with <code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.join()</span></code>
+for the levels.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="coils.time2fname">
+<code class="descclassname">coils.</code><code class="descname">time2fname</code><span class="sig-paren">(</span><em>tstamp</em>, <em>full=False</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.time2fname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return full path to filename prefix (i.e. without dot extension)
+represented by given <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code> object.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="coils.user_input">
+<code class="descclassname">coils.</code><code class="descname">user_input</code><span class="sig-paren">(</span><em>field</em>, <em>default=''</em>, <em>choices=None</em>, <em>password=False</em>, <em>empty_ok=False</em>, <em>accept=False</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.user_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prompt user for input until a value is retrieved or default
+is accepted. Return the input.</p>
+<p>Arguments:</p>
+<p><em>field</em> - Description of the input being prompted for.</p>
+<p><em>default</em> - Default value for the input accepted with a Return-key.</p>
+<p><em>password</em> - Whether the user input should not be echoed to screen.</p>
+<p><em>empty_ok</em> - Whether it’s okay to accept an empty input.</p>
+<p><em>accept</em> - Whether to skip getting actual user input and just accept
+the default value, unless prevented by the combination of
+arguments <em>empty_ok</em> and <em>default</em>. That is, unless <em>default</em>
+is an empty string and <em>empty_ok</em> is False.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="coils.Averager">
+<em class="property">class </em><code class="descclassname">coils.</code><code class="descname">Averager</code><span class="sig-paren">(</span><em>max_count</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.Averager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keeps a running average with limited history.</p>
+<p>Initialize the averager with maximum number of
+(latest) samples to keep.</p>
+<dl class="method">
+<dt id="coils.Averager.__len__">
+<code class="descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#coils.Averager.__len__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Length operator.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="coils.Averager.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.Averager.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a value, and return current average.</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="coils.MapSockServer">
+<em class="property">class </em><code class="descclassname">coils.</code><code class="descname">MapSockServer</code><span class="sig-paren">(</span><em>host</em>, <em>port</em>, <em>on_action=None</em>, <em>encode=True</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.MapSockServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the server object.</p>
+<p><em>host</em>       -  socket host</p>
+<p><em>port</em>       -  socket port</p>
+<dl class="docutils">
+<dt><em>on_action</em>  -  callback upon action reception,</dt>
+<dd>is called with action string</dd>
+</dl>
+<dl class="method">
+<dt id="coils.MapSockServer.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#coils.MapSockServer.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Continuously retrieve client requests until given “stop” request.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="coils.MapSockClient">
+<em class="property">class </em><code class="descclassname">coils.</code><code class="descname">MapSockClient</code><span class="sig-paren">(</span><em>host</em>, <em>port</em>, <em>encode=True</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.MapSockClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Client to the map server.</p>
+<p>Initialize the object.</p>
+<p><em>host</em>  -  socket host</p>
+<p><em>port</em>  -  socket port</p>
+<dl class="method">
+<dt id="coils.MapSockClient.send">
+<code class="descname">send</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.MapSockClient.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send request to server and return server response.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="coils.MapSockRequest">
+<em class="property">class </em><code class="descclassname">coils.</code><code class="descname">MapSockRequest</code><span class="sig-paren">(</span><em>action</em>, <em>key=None</em>, <em>value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.MapSockRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request object sent from client to server.</p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="coils.RateTicker">
+<em class="property">class </em><code class="descclassname">coils.</code><code class="descname">RateTicker</code><span class="sig-paren">(</span><em>periods</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.RateTicker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes rates of ticking.</p>
+<p>Initialize the object with a tuple of time periods in seconds.
+For example, use (60, 300, 900) to track rates at 1, 5 and 15 minute
+periods (like when reporting system load.)</p>
+<dl class="method">
+<dt id="coils.RateTicker.tick">
+<code class="descname">tick</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#coils.RateTicker.tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tick the ticker.
+Return a tuple of values corresponding to periods given in initializer,
+each value representing the rate of ticks (number of ticks per second)
+during that period.</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="coils.Ring">
+<em class="property">class </em><code class="descclassname">coils.</code><code class="descname">Ring</code><span class="sig-paren">(</span><em>donor</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.Ring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Circular data structure implemented as a list.</p>
+<p>Initialize the ring with a donor list.</p>
+<dl class="method">
+<dt id="coils.Ring.__getitem__">
+<code class="descname">__getitem__</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.Ring.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="coils.Ring.__len__">
+<code class="descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#coils.Ring.__len__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="coils.Ring.first">
+<code class="descname">first</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#coils.Ring.first" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the first entry.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="coils.Ring.last">
+<code class="descname">last</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#coils.Ring.last" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the last entry.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="coils.Ring.turn">
+<code class="descname">turn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#coils.Ring.turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn the ring for a single position.
+For example, [a, b, c, d] becomes [b, c, d, a].</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="coils.SocketTalk">
+<em class="property">class </em><code class="descclassname">coils.</code><code class="descname">SocketTalk</code><span class="sig-paren">(</span><em>sock</em>, <em>encode=True</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.SocketTalk" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple layer of socket communication, implementing
+send/receive messaging protocol where each (variable length)
+message is prefixed with a (fixed length) header containing
+the length of the remaining message data string.</p>
+<dl class="docutils">
+<dt>Ideas for protocol and byte-handling are borrowed from:</dt>
+<dd><a class="reference external" href="http://docs.python.org/howto/sockets.html">http://docs.python.org/howto/sockets.html</a>.</dd>
+</dl>
+<p>Initialize the object with a socket.</p>
+<dl class="staticmethod">
+<dt id="coils.SocketTalk.client">
+<em class="property">static </em><code class="descname">client</code><span class="sig-paren">(</span><em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.SocketTalk.client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a SocketTalk client.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="coils.SocketTalk.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#coils.SocketTalk.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="coils.SocketTalk.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#coils.SocketTalk.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive a message.
+Return the message upon successful reception, or None upon failure.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="coils.SocketTalk.pair">
+<em class="property">static </em><code class="descname">pair</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#coils.SocketTalk.pair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a pair of connected SocketTalk peers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="coils.SocketTalk.put">
+<code class="descname">put</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.SocketTalk.put" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send the given <em>message</em>.
+Return True if successful, False if not.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="coils.SocketTalk.server">
+<em class="property">static </em><code class="descname">server</code><span class="sig-paren">(</span><em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.SocketTalk.server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a SocketTalk server.</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="coils.SortedList">
+<em class="property">class </em><code class="descclassname">coils.</code><code class="descname">SortedList</code><span class="sig-paren">(</span><em>donor=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.SortedList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maintains a list of sorted items, with fast trimming
+using less-than/greater-than comparison.</p>
+<p>Initialize the object with a copy of the donor list, sorted.</p>
+<dl class="method">
+<dt id="coils.SortedList.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.SortedList.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add item to the list while maintaining sorted order.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="coils.SortedList.getCountGT">
+<code class="descname">getCountGT</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.SortedList.getCountGT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return number of elements greater than <em>item</em>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="coils.SortedList.getCountLT">
+<code class="descname">getCountLT</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.SortedList.getCountLT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return number of elements less than <em>item</em>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="coils.SortedList.removeLT">
+<code class="descname">removeLT</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#coils.SortedList.removeLT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trim off any elements less than <em>item</em>.
+Return number of elements trimmed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="coils.Timer">
+<em class="property">class </em><code class="descclassname">coils.</code><code class="descname">Timer</code><a class="headerlink" href="#coils.Timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Times duration of code blocks.</p>
+<p>Initialize the object, marking the current time.</p>
+<dl class="method">
+<dt id="coils.Timer.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#coils.Timer.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.timedelta</span></code> object representing
+time elapsed since object construction,
+or since last call to this function, whichever is more recent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="coils.Timer.getTotal">
+<code class="descname">getTotal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#coils.Timer.getTotal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.timedelta</span></code> object representing
+total time elapsed since construction.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="index.html">Coils</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Coils</a></li>
+      <li>Next: <a href="about.html" title="next chapter">About</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Velimir Mlaker.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/coils.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

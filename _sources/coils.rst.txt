@@ -23,12 +23,6 @@ Classes
 
 ----
 
-.. autoclass:: coils.Config
-    :members: load, save, items, __setitem__, __getitem__, __str__
-    :undoc-members:
-
-----
-
 .. autoclass:: coils.MapSockServer
     :members: run
     :undoc-members:

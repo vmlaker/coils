@@ -1,0 +1,10 @@
+.. _about:
+
+About
+=====
+
+Coils is written by `Velimir Mlaker <http://github.com/vmlaker>`_.
+
+The latest version is 2.0.1 updated on October 15, 2018.
+
+Coils is `a repo on GitHub <http://github.com/vmlaker/coils>`_.
