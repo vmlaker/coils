@@ -68,15 +68,15 @@ MASTER_VERSION = $(shell git log master -1 | head -1)
 
 gh-pages: docs
 	rm -rf html
-	git clone https://github.com/vmlaker/coils.git html
-	#git clone git@github.com:vmlaker/coils.git html
+	#git clone https://github.com/vmlaker/coils.git html
+	git clone git@github.com:vmlaker/coils.git html
 	cd html && git checkout gh-pages
 	rm -rf html/*
 	cp -r docs/_build/html/* html
 	cd html && touch .nojekyll
-	#cd html && git add .
-	#cd html && git commit -m 'Update gh-pages for $(MASTER_VERSION).'
-	#cd html && git push origin gh-pages
+	cd html && git add .
+	cd html && git commit -m 'Update gh-pages for $(MASTER_VERSION).'
+	cd html && git push origin gh-pages
 
 clean:
 	rm -rf build dist docs python venv
