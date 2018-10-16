@@ -79,6 +79,6 @@ gh-pages: docs
 	cd html && git push origin gh-pages
 
 clean:
-	rm -rf build dist docs python venv
+	rm -rf build dist docs html python venv
 	rm -rf .coverage .eggs coils.egg-info index.tex
 	find . -name '*.pyc' -exec rm {} \;
