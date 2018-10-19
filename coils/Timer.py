@@ -1,28 +1,23 @@
 """Defines Timer class."""
 
-import datetime
+from datetime import datetime
 
 
 class Timer:
-    """Times duration of code blocks."""
+    """Can be used like a timer or a stopwatch to measure time duration
+    between clicks."""
 
     def __init__(self):
         """Initialize the object, marking the current time."""
-        self._started = datetime.datetime.now()
-        self._previous = self._started
+        self._started = self._previous = datetime.now()
 
     def getTotal(self):
-        """Return a :class:`datetime.timedelta` object representing
-        total time elapsed since construction."""
-        now = datetime.datetime.now()
-        result = now - self._started
-        return result
+        """Return the number of seconds elapsed since object creation."""
+        return (datetime.now() - self._started).total_seconds()
 
     def get(self):
-        """Return a :class:`datetime.timedelta` object representing
-        time elapsed since object construction,
+        """Return the number of seconds elapsed since object creation,
         or since last call to this function, whichever is more recent."""
-        now = datetime.datetime.now()
-        result = now - self._previous
-        self._previous = now
-        return result
+        elapsed = datetime.now() - self._previous
+        self._previous += elapsed
+        return elapsed.total_seconds()
