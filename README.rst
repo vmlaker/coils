@@ -1,4 +1,4 @@
-.. image:: http://vmlaker.github.io/coils/logo.png
+.. image:: https://raw.github.com/vmlaker/coils/master/logo.png
   :alt: Coils Logo
   :target: http://vmlaker.github.io/coils
 .. image:: https://img.shields.io/pypi/v/coils.svg
