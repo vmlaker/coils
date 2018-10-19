@@ -9,6 +9,10 @@ test: venv
 	./python setup.py install
 	./python setup.py test
 
+coverage: test
+	./venv/bin/coverage run coils/test/test*.py
+	./venv/bin/coverage report
+
 dist: clean venv
 	./python setup.py sdist bdist_wheel
 
